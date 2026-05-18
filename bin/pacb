@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# pacb: A simple wrapper for installing packages from a list on Alpine Linux.
+# pacb: A simple wrapper for installing packages from a list on Arch/Artix Linux.
 
 set -e
 
