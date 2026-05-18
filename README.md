@@ -1,6 +1,6 @@
 # pacb
 
-A lightweight bash utility for Alpine Linux to install groups of packages from a text file.
+A lightweight bash utility for Arch/Artix Linux to install groups of packages from a text file.
 
 ## Features
 
