@@ -18,7 +18,7 @@ A lightweight bash utility for Arch/Artix Linux to install groups of packages fr
    ```
 2. Run the installer (requires root):
    ```bash
-   sudo ./install.sh
+   sudo bash install.sh
    ```
 
 ## Usage
@@ -43,9 +43,9 @@ sudo pacb ~/full-path-to-file
 ### Help
 For usage information, use the help flag:
 ```bash
-sudo pacb -h
+pacb -h
 # or
-sudo pacb --help
+pacb --help
 ```
 
 ## License
