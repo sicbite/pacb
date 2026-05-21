@@ -56,4 +56,4 @@ fi
 PACKAGES_ONELINE=$(echo $PACKAGES)
 echo "Installing packages: $PACKAGES_ONELINE"
 
-pacman --needed -S $PACKAGES_ONELINE
+pacman -S $PACKAGES_ONELINE
