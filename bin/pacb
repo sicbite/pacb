@@ -2,7 +2,26 @@
 
 # pacb: A simple wrapper for installing packages from a list on Arch/Artix Linux.
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
 set -e
+
+info() {
+    echo -e "$(date '+%H:%M:%S') ${BLUE}==> $1${NC}"
+}
+
+warn() {
+    echo -e "$(date '+%H:%M:%S') ${YELLOW}==> $1${NC}
+}
+
+error() {
+    echo -e "$(date '+%H:%M:%S') ${RED}==> $1${NC}" >&2
+    log "[ERROR] $1"
+}
 
 # Help function
 show_help() {
@@ -26,13 +45,13 @@ fi
 
 # Check for sudo/root
 if [ "$USER" != "root" ]; then
-    echo "Error: This script must be run with sudo or as root."
+    error "Error: This script must be run with sudo or as root."
     exit 1
 fi
 
 # Check for file argument
 if [ -z "$1" ]; then
-    echo "Error: No package list file provided."
+    error "Error: No package list file provided."
     show_help
     exit 1
 fi
@@ -40,7 +59,7 @@ fi
 FILE="$1"
 
 if [ ! -f "$FILE" ]; then
-    echo "Error: File '$FILE' not found."
+    error "Error: File '$FILE' not found."
     exit 1
 fi
 
@@ -48,12 +67,12 @@ fi
 PACKAGES=$(sed 's/#.*//; /^[[:space:]]*$/d' "$FILE")
 
 if [ -z "$PACKAGES" ]; then
-    echo "No valid packages found in $FILE."
+    warn "No valid packages found in $FILE."
     exit 0
 fi
 
 # Install packages
 PACKAGES_ONELINE=$(echo $PACKAGES)
-echo "Installing packages: $PACKAGES_ONELINE"
+info "Installing packages: $PACKAGES_ONELINE"
 
 pacman -S $PACKAGES_ONELINE
