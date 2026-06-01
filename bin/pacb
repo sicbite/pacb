@@ -15,7 +15,7 @@ info() {
 }
 
 warn() {
-    echo -e "$(date '+%H:%M:%S') ${YELLOW}==> $1${NC}
+    echo -e "$(date '+%H:%M:%S') ${YELLOW}==> $1${NC}"
 }
 
 error() {
